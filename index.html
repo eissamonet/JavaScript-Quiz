@@ -15,6 +15,7 @@
                 <a href="#view-highscores">View Highscores</a>
             </li>
         </ul>
+        <div id="timer" class="timer" style="text-align:end;">Timer:</div>
     </header>
     
     <main>
@@ -35,7 +36,7 @@
     
         <div hidden id="score-card" class="card">
             <h2>Done!</h2>
-            <p>Your final score is <span id=score></span></p>
+            <p>Your final score is: <span id=score></span></p>
             <form class="submission-form" id="submission-form">
                 <lable for="intials">Enter your Initials:</lable>
                 <input type="text" id="initials">
@@ -46,25 +47,13 @@
         <div hidden id="highscores-card" class="card">
             <h2>Highscores</h2>
             <ol id="highscore-list"></ol>
-            <div calss="inline-buttons">
+            <div class="inline-buttons">
                 <button id="back-button" class="button">Go Back</button>
                 <button id="clear-button" class="button">Clear</button>
             </div>
         </div>
-    
-    <div class="quiz-questions">
-        <div class="questionText" id="ques"></div>
-        <div class="questionOptions" id="opt"></div>
 
     </main>
-
-
-
-
-
-
-
-
 
  
     <script src="./assets/scripts.js"></script>
