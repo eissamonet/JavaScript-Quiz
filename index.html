@@ -16,21 +16,37 @@
             </li>
         </ul>
     </header>
-
+    
     <main>
-        <div id="=start-card class=card">
-        <section id="javascript-quiz" class="javascript-quiz"></section>
-            <h1>JavaScript Quiz</h1>
+        <div id="start-card" class="card">
+            <h1 id="title">JavaScript Quiz</h1>
             <p>You will have <span>35 seconds</span> to answer the following 6 questions to test your JavaScript knowledge! Good luck!</p>
             <button id="start-button" class="button">Start Quiz</button>
-        </section>
         </div>
-    </section>
 
+        <div hidden id="quiz-card" class="card"></div>
+            <h1 id="questionText"></h1>
+            <div id="questionOptions">
+                <button id="option0" class="option-button"></button>
+                <button id="option1" class="option-button"></button>
+                <button id="option2" class="option-button"></button>
+                <button id="option3" class="option-button"></button>
+            </div>
+    
+        <div hidden id="score-card" class="card">
+            <h2>Done!</h2>
+            <p>Your final score is <span id=score></span></p>
+            <form class="submission-form" id="submission-form">
+                <lable for="intials">Enter your Initials:</lable>
+                <input type="text" id="initials">
+                <button id="submit-button" class="button">Submit</button>
+            </form>
+        </div>
+    
+    
     <div class="quiz-questions">
-        <div class="timer">
-        <div class="question" id="ques"></div>
-        <div class="option" id="opt"></div>
+        <div class="questionText" id="ques"></div>
+        <div class="questionOptions" id="opt"></div>
 
     </main>
 
