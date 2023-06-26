@@ -4,7 +4,7 @@ var Questions = [{
     question: "Which of the following is NOT a Primitive/Value Type?",
     answer: "Response"
     options: [
-        "String",
+        "Strings",
         "Boolean",
         "Response",
         "None of the Above"
@@ -18,7 +18,7 @@ var Questions = [{
     options: [
         "getElementById",
         "var",
-        "getElementBy Class",
+        "getElementBy ClassName",
         "None of the Above"
 
     ]
@@ -26,12 +26,13 @@ var Questions = [{
 
 var Questions = [{
     number: 3,
-    question: "Which of the following is NOT a Primitive/Value Type?",
-    answer: "Response"
+    question: "An If/Else statement is enclosed within?",
+    answer: ""
     options: [
-        "String",
-        "Boolean",
-        "Response",
+        "Quotation Marks",
+        "Parenthesis",
+        "Curly Brackets",
+        "None of the Above"
 
 
     ]
@@ -39,12 +40,13 @@ var Questions = [{
 
 var Questions = [{
     number: 4,
-    question: "Which of the following is NOT a Primitive/Value Type?",
-    answer: "Response"
+    question: "Arrays in JavaScripts can be used to store?",
+    answer: "All of the Above"
     options: [
-        "String",
-        "Boolean",
-        "Response",
+        "Strings",
+        "Other Arrays",
+        "Booleans",
+        "All of the Above"
 
 
     ]
@@ -52,12 +54,13 @@ var Questions = [{
 
 var Questions = [{
     number: 5,
-    question: "Which of the following is NOT a Primitive/Value Type?",
+    question: "Which of the following methods is used to access HTML elements using JavaScript?",
     answer: "Response"
     options: [
-        "String",
-        "Boolean",
-        "Response",
+        "getElementById",
+        "getElementBy ClassName",
+        "Both A and B",
+        "None of the Above"
 
 
     ]
@@ -90,7 +93,7 @@ var Questions = [{
 }]
 
 var Questions = [{
-    number: ,
+    number: 8,
     question: "Which of the following is NOT a Primitive/Value Type?",
     answer: "Response"
     options: [
