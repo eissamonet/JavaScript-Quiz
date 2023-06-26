@@ -7,7 +7,7 @@ var questions = [
     },
 
     {
-         questionText: "Which of the following is used to define a variable in JavaScripts?",
+        questionText: "Which of the following is used to define a variable in JavaScripts?",
         options: ["1. getElementById","2. var","3. getElementByClassName","4. None of the Above"]
         answer: "2. var",
     },
