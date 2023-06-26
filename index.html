@@ -16,11 +16,15 @@
             </ul>
         </div>
         <h1>JavaScript Quiz</h1>
-        <p>Try to answer the following 8 questions to test your JavaScript knowledge! You will have 35 seconds to complete the quiz. At the end of the quiz, log your initials and view your progess displayed under View Highscores. Good luck!</p>
+        <p>Try to answer the following 8 questions to test your JavaScript knowledge! You will have <span>35 seconds</span> to complete the quiz. At the end of the quiz, log your initials and view your progess displayed under View Highscores. Good luck!</p>
         <button class="start-button">Start Quiz</button>
     </header>
 
-    <main>
+    <div class="quiz-questions">
+        <div class="timer">
+            <div class="time-remaining-txt">Time Remaining</div>
+            <div class="timer-sec">35</div>
+        </div>
         <div class="question" id="ques"></div>
         <div class="option" id="opt"></div>
 
