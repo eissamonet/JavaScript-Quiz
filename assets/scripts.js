@@ -7,7 +7,7 @@ var Questions = [{
         "String",
         "Boolean",
         "Response",
-        "Number"
+
 
     ]
 }]
