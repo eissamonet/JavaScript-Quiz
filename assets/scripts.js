@@ -33,8 +33,6 @@ var Questions = [{
         "Parenthesis",
         "Curly Brackets",
         "None of the Above"
-
-
     ]
 }]
 
@@ -47,60 +45,32 @@ var Questions = [{
         "Other Arrays",
         "Booleans",
         "All of the Above"
-
-
     ]
 }]
 
 var Questions = [{
     number: 5,
     question: "Which of the following methods is used to access HTML elements using JavaScript?",
-    answer: "Response"
+    answer: "Both A and B"
     options: [
         "getElementById",
         "getElementBy ClassName",
         "Both A and B",
         "None of the Above"
 
-
     ]
 }]
 
 var Questions = [{
     number: 6,
-    question: "Which of the following is NOT a Primitive/Value Type?",
+    question: "JavaScript is an ____ language?",
     answer: "Response"
     options: [
-        "String",
-        "Boolean",
-        "Response",
-
+        "Object-Oriented",
+        "Array",
+        "Object-Based",
+        "None of the Above"
 
     ]
 }]
 
-var Questions = [{
-    number: 7,
-    question: "Which of the following is NOT a Primitive/Value Type?",
-    answer: "Response"
-    options: [
-        "String",
-        "Boolean",
-        "Response",
-
-
-    ]
-}]
-
-var Questions = [{
-    number: 8,
-    question: "Which of the following is NOT a Primitive/Value Type?",
-    answer: "Response"
-    options: [
-        "String",
-        "Boolean",
-        "Response",
-
-
-    ]
-}]
