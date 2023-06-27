@@ -54,7 +54,7 @@ var intervalID;
 var time;
 var currentQuestion;
 
-document.querySelector("start-button").addEventListener("click", startQuiz);
+startCard.addEventListener("click", startQuiz);
 
 // show question card
 function startQuiz(){
@@ -67,7 +67,7 @@ function startQuiz(){
     displayTime();
 }
 
-// End quiz qhwn time runs out
+// End quiz when time runs out
 function countdown(){
     time--;
     displayTime();
@@ -76,7 +76,7 @@ function countdown(){
     }
 }
 
-var timeDisplay = document.querySelector("time");
+var timeDisplay = document.querySelector("#time");
 function displayTime(){
     timeDisplay.textContent = time;
 }
@@ -90,4 +90,30 @@ for (var i = 0; i < option.length; i++){
     var option = options[i];
     var optionButton = document.querySelector("option + 1");
     optionButton.textContent = option;
+}
+
+document.querySelector("#question-Option").addEventListener("click", checkAnswer);
+
+function optionIsCorrect(optionButton){
+    return optionButton.textContent === questions[currentQuestion].answer;
+}
+
+function checkAnswer(eventObject) {
+    var optionButton = eventObject.target;
+    resultDiv.style.display = "block";
+    if (optionIsCorrect(optionButton)){
+        resultText.textContent = "Correct!";
+        setTimeout(hideResultText, 1000);
+    } else {
+        resultText.textContent = "Incorrect!";
+        setTimeout(hideResultText, 1000);
+        if (time >= 10) {
+            time = time - 10;
+            displayTime;
+        } else {
+            time = 0;
+            displayTime();
+            endQuiz();
+        }  
+    }
 }
