@@ -50,6 +50,10 @@ function hideCards(){
     scoreCard.setAttribute("hidden", true);
 }
 
+var intervalID;
+var time;
+var currentQuestion;
+
 document.querySelector("start-button").addEventListener("click", startQuiz);
 
 // show question card
@@ -61,4 +65,29 @@ function startQuiz(){
     time = questions.length * 10;
     intervalID = setInterval(countdown, 1000);
     displayTime();
+}
+
+// End quiz qhwn time runs out
+function countdown(){
+    time--;
+    displayTime();
+    if (time < 1){
+        endQuiz();
+    }
+}
+
+var timeDisplay = document.querySelector("time");
+function displayTime(){
+    timeDisplay.textContent = time;
+}
+
+function displayQuestion(){
+    var question = questions[currentQuestion];
+    var options = question.options;
+}
+
+for (var i = 0; i < option.length; i++){
+    var option = options[i];
+    var optionButton = document.querySelector("option + 1");
+    optionButton.textContent = option;
 }
