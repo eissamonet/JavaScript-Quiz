@@ -67,6 +67,24 @@ function startQuiz(){
     displayTime();
 }
 
+// set timer function
+var secondsLeft = 35;
+
+function setTime() {
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    timeEl.textContent = secondsLeft + "End of time.";
+
+    if(secondsLeft === 0) {
+      // Stops execution of action at set interval
+      clearInterval(timerInterval);
+      sendMessage();
+    }
+
+  }, 1000);
+}
+
+
 // End quiz when time runs out
 function countdown(){
     time--;
