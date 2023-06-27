@@ -54,8 +54,6 @@ var intervalID;
 var time;
 var currentQuestion;
 
-startCard.addEventListener("click", startQuiz);
-
 // show question card
 function startQuiz(){
     hideCards();
@@ -135,3 +133,72 @@ function checkAnswer(eventObject) {
         }  
     }
 }
+
+currentQuestion++;
+if (currentQuestion < questions.length) {
+    displayQuestion()
+} else {
+    endQuiz();
+}
+
+// clear timer at end of quiz
+function endQuiz() {
+    clearInterval(intervalID);
+    hideCards();
+    scoreCard.removeAttribute("hidden");
+    scoreCard.textContent = time;
+}
+
+var submitButton = document.querySelector("#submit-button");
+var inputElement = document.querySelector("#initials");
+
+submitButton.addEventListener("click", storeScore);
+
+function storeScore(event) {
+    event.preventDefault();
+    if (!inputElement.value) {
+        alert ("Please enter your initials!");
+    }
+}
+
+// store initials in view highscores
+var leaderboardItem = {
+    initials: inputElement.value,
+    score: time,
+};
+
+updateStoredLeaderboard(leaderboardItem);
+
+hideCards();
+leaderboardCard.removeAttribute("hidden");
+
+renderLeaderboard();
+
+function updateStoredLeaderboard(leaderboardItem) {
+    let leaderboardArray = getLeaderboard();
+    leaderboardArray.push(leaderboardItem);
+    localStorage.setItem("leaderboardArray", JSON.stringify(leaderboardArray));
+}
+
+var clearButton = document.querySelector("#clear-button");
+clearButton.addEventListener("click", clearHighscores);
+
+function clearHighscores() {
+    localStorage.clear();
+    leaderboardCard.removeAttribute("hidden");
+}
+
+var backButton = document.querySelector("#back-button");
+backButton.addEventListener("click", returnToStart);
+
+function returnToStart() {
+    hideCards();
+    startCard.removeAttribute("hidden");
+}
+
+clearInterval(intervalID);
+
+time = undefined;
+displayTime();
+
+startCard.addEventListener("click", startQuiz);
