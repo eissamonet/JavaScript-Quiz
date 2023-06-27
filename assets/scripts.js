@@ -37,3 +37,28 @@ var questions = [
     }
 ]
 
+// Assign variables to cards/id
+
+var startCard = document.querySelector("start-card");
+var quizCard = document.querySelector("quiz-card");
+var scoreCard = document.querySelector("score-card")
+
+// Cards that are hidden
+function hideCards(){
+    startCard.setAttribute("hidden", true);
+    quizCard.setAttribute("hidden", true);
+    scoreCard.setAttribute("hidden", true);
+}
+
+document.querySelector("start-button").addEventListener("click", startQuiz);
+
+// show question card
+function startQuiz(){
+    hideCards();
+    quizCard.removeAttribute("hidden");
+    currentQuestion = 0;
+    displayQuestion();
+    time = questions.length * 10;
+    intervalID = setInterval(countdown, 1000);
+    displayTime();
+}
