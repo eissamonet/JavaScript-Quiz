@@ -39,9 +39,9 @@ var questions = [
 
 // Assign variables to cards/id
 
-var startCard = document.querySelector("start-card");
-var quizCard = document.querySelector("quiz-card");
-var scoreCard = document.querySelector("score-card")
+var startCard = document.querySelector("#start-card");
+var quizCard = document.querySelector("#quiz-card");
+var scoreCard = document.querySelector("#score-card")
 
 // Cards that are hidden
 function hideCards(){
@@ -65,6 +65,8 @@ function startQuiz(){
     displayTime();
 }
 
+startCard.addEventListener("click", startQuiz); 
+
 // set timer function
 var secondsLeft = 35;
 
@@ -81,6 +83,7 @@ function setTime() {
 
   }, 1000);
 }
+
 
 
 // End quiz when time runs out
@@ -102,11 +105,11 @@ function displayQuestion(){
     var options = question.options;
 }
 
-for (var i = 0; i < option.length; i++){
+for (var i = 0; i < options.length; i++){
     var option = options[i];
-    var optionButton = document.querySelector("option + 1");
+    var optionButton = document.querySelector("#option + 1");
     optionButton.textContent = option;
-}
+  }
 
 document.querySelector("#question-Option").addEventListener("click", checkAnswer);
 
@@ -201,4 +204,3 @@ clearInterval(intervalID);
 time = undefined;
 displayTime();
 
-startCard.addEventListener("click", startQuiz);
