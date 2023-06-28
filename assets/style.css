@@ -9,3 +9,16 @@ header {
     font-size: 20px;
     
 }
+
+.start-button {text-align: center;
+
+}
+
+button:hover {
+    background-color: beige;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
