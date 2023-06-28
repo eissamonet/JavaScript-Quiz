@@ -70,7 +70,7 @@ startCard.addEventListener("click", startQuiz);
 // set timer function
 var seconds=35
 var timer;
-function setTimer() {
+function setTimer() 
     if(seconds < 35) {
         document.getElementById("timer").innerHTML = seconds
     }
@@ -79,8 +79,6 @@ function setTimer() {
     } else {
         clearInterval(timer)
         alert("Time Ended")
-        
-    }, 1000);
   
     }
     
