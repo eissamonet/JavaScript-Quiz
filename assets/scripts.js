@@ -68,23 +68,23 @@ function startQuiz(){
 startCard.addEventListener("click", startQuiz); 
 
 // set timer function
-var secondsLeft = 35;
-
-function setTime() {
-  var timerInterval = setInterval(function() {
-    secondsLeft--;
-    timeEl.textContent = secondsLeft + "End of time.";
-
-    if(secondsLeft === 0) {
-      // Stops execution of action at set interval
-      clearInterval(timerInterval);
-      sendMessage();
+var seconds=35
+var timer;
+function setTimer() {
+    if(seconds < 35) {
+        document.getElementById("timer").innerHTML = seconds
     }
-
-  }, 1000);
-}
-
-
+    if (seconds > 0 ) {
+        seconds--;
+    } else {
+        clearInterval(timer)
+        alert("Time Ended")
+        
+    }, 1000);
+  
+    }
+    
+    
 
 // End quiz when time runs out
 function countdown(){
