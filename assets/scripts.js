@@ -40,24 +40,37 @@ var questions = [
 // Assign variables to cards/id
 
 var startCard = document.querySelector("#start-card");
-var quizCard = document.querySelector("#quiz-card");
+var questionCard = document.querySelector("#question-card");
 var scoreCard = document.querySelector("#score-card")
+var leaderboardCard = document.querySelector("#leaderboard-card");
 
 // Cards that are hidden
 function hideCards(){
     startCard.setAttribute("hidden", true);
-    quizCard.setAttribute("hidden", true);
+    questionCard.setAttribute("hidden", true);
     scoreCard.setAttribute("hidden", true);
+    leaderboardCard.setAttribute("hidden", true);
 }
 
+const resultDiv = document.querySelector("#result-div");
+const resultText = document.querySelector("#result-text");
+
+// hide result div
+function hideResultText(){
+    resultDiv.style.display = "none";
+}
+
+// variables req globally
 var intervalID;
 var time;
 var currentQuestion;
 
-// show question card
+document.querySelector("#start-button").addEventListener("click", startQuiz);
+
+// start quiz
 function startQuiz(){
     hideCards();
-    quizCard.removeAttribute("hidden");
+    questionCard.removeAttribute("hidden");
     currentQuestion = 0;
     displayQuestion();
     time = questions.length * 10;
@@ -65,27 +78,7 @@ function startQuiz(){
     displayTime();
 }
 
-startCard.addEventListener("click", startQuiz); 
-
-// set timer function
-var seconds=35
-var timer;
-function setTimer() 
-    if (seconds < 35) {
-        document.getElementById("timer").innerHTML = seconds
-    }
-    if (seconds > 0 ) {
-        seconds--;
-    } else {
-        clearInterval(timer)
-        alert("Time Ended")
-  
-    }
-    
-    timer = setInterval(setTimer, 1000)
-
-
-// End quiz when time runs out
+// reduce time by 1 and display new value
 function countdown(){
     time--;
     displayTime();
@@ -94,28 +87,35 @@ function countdown(){
     }
 }
 
+//display time on page
 var timeDisplay = document.querySelector("#time");
 function displayTime(){
     timeDisplay.textContent = time;
 }
 
+// display question and options
 function displayQuestion(){
     var question = questions[currentQuestion];
     var options = question.options;
+
+    var questionText = document.querySelector("#question-text");
+    questionText.textContent = question.questionText;
+
+    for (var i = 0; i < options.length; i++){
+        var option = options[i];
+        var optionButton = document.querySelector("#option" + (i + 1));
+        optionButton.textContent = option;
+    }
 }
 
-for (var i = 0; i < options.length; i++){
-    var option = options[i];
-    var optionButton = document.querySelector("#option + 1");
-    optionButton.textContent = option;
-  }
-
-document.querySelector("#question-Option").addEventListener("click", checkAnswer);
+// check if option is correct
+document.querySelector("#quiz-options").addEventListener("click", checkAnswer);
 
 function optionIsCorrect(optionButton){
     return optionButton.textContent === questions[currentQuestion].answer;
 }
 
+// if answer is incorrect, reduce time by 10 seconds
 function checkAnswer(eventObject) {
     var optionButton = eventObject.target;
     resultDiv.style.display = "block";
@@ -136,6 +136,7 @@ function checkAnswer(eventObject) {
     }
 }
 
+// increase current question by 1
 currentQuestion++;
 if (currentQuestion < questions.length) {
     displayQuestion()
@@ -143,7 +144,9 @@ if (currentQuestion < questions.length) {
     endQuiz();
 }
 
-// clear timer at end of quiz
+// display scorecare and hide other cards
+var score = document.querySelector("#score");
+
 function endQuiz() {
     clearInterval(intervalID);
     hideCards();
@@ -154,6 +157,7 @@ function endQuiz() {
 var submitButton = document.querySelector("#submit-button");
 var inputElement = document.querySelector("#initials");
 
+// store initials in view highscores
 submitButton.addEventListener("click", storeScore);
 
 function storeScore(event) {
@@ -163,7 +167,7 @@ function storeScore(event) {
     }
 }
 
-// store initials in view highscores
+//store score in local storage
 var leaderboardItem = {
     initials: inputElement.value,
     score: time,
@@ -171,6 +175,7 @@ var leaderboardItem = {
 
 updateStoredLeaderboard(leaderboardItem);
 
+// hide question card and display leaderboard
 hideCards();
 leaderboardCard.removeAttribute("hidden");
 
@@ -182,6 +187,38 @@ function updateStoredLeaderboard(leaderboardItem) {
     localStorage.setItem("leaderboardArray", JSON.stringify(leaderboardArray));
 }
 
+// if exisit, get leaderboard from local storage and parse
+function getLeaderboard() {
+    let leaderboardArray = localStorage.getItem("leaderboardArray");
+    if (!leaderboardArray) {
+        return [];
+    }
+    return JSON.parse(leaderboardArray);
+}
+
+// display leaderboard on page
+function renderLeaderboard() {
+    let leaderboardArray = getLeaderboard();
+    let highscoreList = document.querySelector("#highscore-list");
+    highscoreList.innerHTML = "";
+    for (let i = 0; i < leaderboardArray.length; i++) {
+        let leaderboardItem = leaderboardArray[i];
+        let leaderboardListItem = document.createElement("li");
+        leaderboardListItem.textContent = leaderboardItem.initials + " - " + leaderboardItem.score;
+        leaderboardList.appendChild(leaderboardListItem);
+    }
+}
+
+// sort leaderboard by score, high to low
+function sortLeaderboard() {
+    let leaderboardArray = getLeaderboard();
+    leaderboardArray.sort(function(a, b) {
+        return b.score - a.score;
+    });
+    return leaderboardArray;
+}
+
+// clear leaderboard
 var clearButton = document.querySelector("#clear-button");
 clearButton.addEventListener("click", clearHighscores);
 
@@ -190,6 +227,7 @@ function clearHighscores() {
     leaderboardCard.removeAttribute("hidden");
 }
 
+// return to start page
 var backButton = document.querySelector("#back-button");
 backButton.addEventListener("click", returnToStart);
 
@@ -198,8 +236,33 @@ function returnToStart() {
     startCard.removeAttribute("hidden");
 }
 
+// use link to view highscores
+var leaderboardLink = document.querySelector("#leaderboard-link");
+leaderboardLink.addEventListener("click", viewLeaderboard);
+
+function viewLeaderboard() {
+    hideCards();
+    leaderboardCard.removeAttribute("hidden");
+}
+
+// clear timer at end of quiz
 clearInterval(intervalID);
 
 time = undefined;
 displayTime();
+
+renderLeaderboard();
+
+// reset quiz
+var resetButton = document.querySelector("#reset-button");
+resetButton.addEventListener("click", resetQuiz);
+
+function resetQuiz() {
+    hideCards();
+    startCard.removeAttribute("hidden");
+    time = undefined;
+    displayTime();
+    currentQuestion = 0;
+    displayQuestion();
+}
 
