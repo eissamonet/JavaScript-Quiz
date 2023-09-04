@@ -24,11 +24,12 @@
     
         <div hidden id=question-card class="card">
             <h2 id="question-text"></h2>
+
             <div id=quiz-options>
-                <button id="choice0" class="choice">Choice 1</button>
-                <button id="choice1" class="choice">Choice 2</button>
-                <button id="choice2" class="choice">Choice 3</button>
-                <button id="choice3" class="choice">Choice 4</button>
+                <button id="option0" class="button option-button"></button>
+                <button id="option1" class="button option-button"></button>
+                <button id="option2" class="button option-button"></button>
+                <button id="option3" class="button option-button"></button>
             </div>
 
             <div id=result-div>
@@ -39,29 +40,25 @@
     
         <div hidden id=score-card class="card">
             <h2>All done!</h2>
-            <p>Your final score is <span id="final-score"></span></p>
-            <form id="submit-form" class="submit-form">
+            <p>Your final score is <span id="score"></span></p>
+            <form id="submission-form" class="inline-form">
                 <label for="initials">Enter initials:</label>
-                <input type="text" id="initials" name="initials" placeholder="ABC">
+                <input type="text" id="initials">
                 <button id="submit-button" class="button">Submit</button>
             </form>
-    
-            <div>
-                <button id="restart-button" class="button">Restart Quiz</button>
-            </div>
         </div>
-
+    
         <div hidden id=leaderboard-card class="card">
             <h2>Highscores</h2>
-            <ol id="highscores-list"></ol>
-            <div>
+            <ol id="highscore-list"></ol>
+            <div class="inline-buttons">
+                <button id="back-button" class="button">Go Back</button>
                 <button id="clear-button" class="button">Clear Highscores</button>
             </div>
-            <div>
-                <button id="go-back-button" class="button">Go Back</button>
-            </div>
-    </div>
- 
+        </div>
+            
+    </main>
+    
     <script src="./assets/scripts.js"></script>
 </body>
 </html>
