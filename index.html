@@ -9,40 +9,57 @@
 </head> 
 
 <body>
-    <div class="scores"><a href="highscores.html">View High Scores</a></div>
+    <header>
+        <a id=leaderboard-link>View Highscores</a>
+        <time>Time: <span id="time"></span></time>
+    </header>
 
-    <div class="timer">Time: <span id="time">60</span></div>
-
-    <div class="wrwpper">
-        <div id="start-screen" class="start">
-            <h1>JavaScript Quiz</h1>
+    <main>
+        <div id="start-card" class="card">
+            <h1 id=title>JavaScript Quiz</h1>
             <p>Please answer the following code-related questions within the time limit. Incorrect answers will penalize your score/time by ten seconds!</p>
             <button id="start-button" class="button">Start Quiz</button>
         </div>
-    </div>
     
-    <div id="quiz" class="quiz">
-        <h2 id="question">Question</h2>
-        <div id="choices" class="choices">
-            <button id="choice0" class="choice">Choice 1</button>
-            <button id="choice1" class="choice">Choice 2</button>
-            <button id="choice2" class="choice">Choice 3</button>
-            <button id="choice3" class="choice">Choice 4</button>
-        </div> 
-    </div>
+    
+        <div hidden id=question-card class="card">
+            <h2 id="question-text"></h2>
+            <div id=quiz-options>
+                <button id="choice0" class="choice">Choice 1</button>
+                <button id="choice1" class="choice">Choice 2</button>
+                <button id="choice2" class="choice">Choice 3</button>
+                <button id="choice3" class="choice">Choice 4</button>
+            </div>
 
-    <div id="end-screen" class="end">
-        <h2>All done!</h2>
-        <p>Your final score is <span id="final-score"></span></p>
-        <form id="submit-form" class="submit-form">
-            <label for="initials">Enter initials:</label>
-            <input type="text" id="initials" name="initials" placeholder="ABC">
-            <button id="submit-button" class="button">Submit</button>
-        </form>
-
-        <div>
-            <button id="restart-button" class="button">Restart Quiz</button>
+            <div id=result-div>
+                <hr>
+                <p id="result-text"></p>
+            </div>
+        </div>        
+    
+        <div hidden id=score-card class="card">
+            <h2>All done!</h2>
+            <p>Your final score is <span id="final-score"></span></p>
+            <form id="submit-form" class="submit-form">
+                <label for="initials">Enter initials:</label>
+                <input type="text" id="initials" name="initials" placeholder="ABC">
+                <button id="submit-button" class="button">Submit</button>
+            </form>
+    
+            <div>
+                <button id="restart-button" class="button">Restart Quiz</button>
+            </div>
         </div>
+
+        <div hidden id=leaderboard-card class="card">
+            <h2>Highscores</h2>
+            <ol id="highscores-list"></ol>
+            <div>
+                <button id="clear-button" class="button">Clear Highscores</button>
+            </div>
+            <div>
+                <button id="go-back-button" class="button">Go Back</button>
+            </div>
     </div>
  
     <script src="./assets/scripts.js"></script>

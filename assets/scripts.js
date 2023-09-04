@@ -71,7 +71,7 @@ startCard.addEventListener("click", startQuiz);
 var seconds=35
 var timer;
 function setTimer() 
-    if(seconds < 35) {
+    if (seconds < 35) {
         document.getElementById("timer").innerHTML = seconds
     }
     if (seconds > 0 ) {
@@ -82,7 +82,8 @@ function setTimer()
   
     }
     
-    
+    timer = setInterval(setTimer, 1000)
+
 
 // End quiz when time runs out
 function countdown(){
