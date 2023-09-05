@@ -44,16 +44,15 @@ var questionCard = document.querySelector("#question-card");
 var scoreCard = document.querySelector("#score-card")
 var leaderboardCard = document.querySelector("#leaderboard-card");
 
-// Cards that are hidden
-function hideCards(){
-    startCard.setAttribute("hidden", true);
-    questionCard.setAttribute("hidden", true);
-    scoreCard.setAttribute("hidden", true);
-    leaderboardCard.setAttribute("hidden", true);
-}
 
 const resultDiv = document.querySelector("#result-div");
 const resultText = document.querySelector("#result-text");
+
+// Cards that are hidden
+function hideCards(){
+    questionCard.setAttribute("hidden", true);
+    leaderboardCard.setAttribute("hidden", true);
+}
 
 // hide result div
 function hideResultText(){
@@ -136,6 +135,17 @@ function checkAnswer(eventObject) {
     }
 }
 
+// function to generate next question
+function nextQuestion() {
+    currentQuestion++;
+    if (currentQuestion < questions.length) {
+        displayQuestion();
+    } else {
+        endQuiz();
+    }
+}
+
+
 // increase current question by 1
 currentQuestion++;
 if (currentQuestion < questions.length) {
@@ -144,7 +154,7 @@ if (currentQuestion < questions.length) {
     endQuiz();
 }
 
-// display scorecare and hide other cards
+// display scorecard and hide other cards
 var score = document.querySelector("#score");
 
 function endQuiz() {
