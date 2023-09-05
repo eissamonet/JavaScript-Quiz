@@ -29,6 +29,9 @@ GIVEN I am taking a code quiz
 
 This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript.
 
+<img width="1437" alt="Screenshot 2023-09-04 at 7 23 19 PM" src="https://github.com/eissamonet/JavaScript-Quiz/assets/133728858/75545c21-ddd5-46f8-92de-223928f16cce">
+
+
 ## License
 
 MIT
